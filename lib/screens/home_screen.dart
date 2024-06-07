@@ -21,7 +21,14 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: Icon(Icons.shopping_basket_outlined),
-          )
+          ),
+          InkWell(
+            onTap: () => Navigator.of(context).pushNamed('/login'),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: Icon(Icons.person_outlined),
+            ),
+          ),
         ],
       ),
       body: Expanded(
@@ -53,10 +60,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 scrollDirection: Axis.horizontal,
                 children: [
                   Category(),
+                  SizedBox(
+                    width: 40,
+                  ),
                   Category(),
+                  SizedBox(
+                    width: 40,
+                  ),
                   Category(),
+                  SizedBox(
+                    width: 40,
+                  ),
                   Category(),
+                  SizedBox(
+                    width: 40,
+                  ),
                   Category(),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  Category(),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  Category(),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  Category(),
+                  SizedBox(
+                    width: 40,
+                  ),
                   Category(),
                 ],
               ),
