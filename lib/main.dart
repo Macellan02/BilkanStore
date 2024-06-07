@@ -2,6 +2,7 @@
 
 import 'package:bilkan_store/screens/home_screen.dart';
 import 'package:bilkan_store/screens/login_screen.dart';
+import 'package:bilkan_store/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => HomeScreen(),
         '/login': (context) => LoginScreen(),
+        '/register': (context) => RegisterScreen(),
       },
 
       home: const HomeScreen(),
