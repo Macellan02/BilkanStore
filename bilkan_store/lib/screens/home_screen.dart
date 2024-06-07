@@ -43,6 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 150,
+            ),
             //alt taraf
             Expanded(
               flex: 2,

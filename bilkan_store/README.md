@@ -1,16 +1,9 @@
-# bilkan_store
+# Madiva store
 
-A new Flutter project.
+>Developers:
+>>Yasin Bilgin x 221216047
+>>Gürkan Emre Duymaç x 221216044
 
-## Getting Started
+[Supervisor: Keyvan Arasteh](https://github.com/keyvanarasteh)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screens
