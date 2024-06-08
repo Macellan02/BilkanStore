@@ -74,18 +74,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 //giris yap cnm
-                SizedBox(
-                  width: 480,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Giriş Yap"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black87,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: SizedBox(
+                    width: 480,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Giriş Yap"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black87,
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 1),
                 //google, facebook, twitter
                 Padding(
                   padding: const EdgeInsets.all(25.0),

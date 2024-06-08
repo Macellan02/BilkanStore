@@ -167,14 +167,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30),
           //kayıt ol cnm
-          SizedBox(
-            width: 480,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text("Kayıt ol"),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black87,
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+            child: SizedBox(
+              width: 480,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text("Kayıt ol"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black87,
+                ),
               ),
             ),
           ),
