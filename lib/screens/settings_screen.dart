@@ -14,7 +14,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   //dil
-  String language = 'tr';
+  String language = 'en';
 
   //tema
   bool darkMode = false;
@@ -49,7 +49,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
 
     if (l == null){
-      changeLanguage('tr');
+      changeLanguage('en');
     }
     else {
       language = l;
