@@ -13,18 +13,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+            onTap: () => Navigator.of(context).pushNamed('/home'),
+            child: Icon(Icons.home_outlined)),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Icon(Icons.shopping_basket_outlined),
+          ),
+          InkWell(
+            onTap: () => Navigator.of(context).pushNamed('/login'),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: Icon(Icons.person_outlined),
+            ),
+          ),
+        ],
+      ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           //top image
           Container(
-            height: 500,
-            width: 500,
+            height: 300,
+            width: 550,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
               ),
             ),
+          ),
+          SizedBox(
+            height: 50,
           ),
           //alt taraf
           //email
