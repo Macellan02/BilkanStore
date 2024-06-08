@@ -23,11 +23,18 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.only(right: 20.0),
             child: Icon(Icons.shopping_basket_outlined),
           ),
-          InkWell(
-            onTap: () => context.go('/login'),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20.0),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: InkWell(
+              onTap: () => context.go('/login'),
               child: Icon(Icons.person_outlined),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: InkWell(
+              onTap: () => context.go('/settings'),
+              child: Icon(Icons.tune_outlined),
             ),
           ),
         ],
@@ -74,18 +81,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 //giris yap cnm
-                SizedBox(
-                  width: 480,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Giriş Yap"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black87,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: SizedBox(
+                    width: 480,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Giriş Yap"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black87,
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 1),
                 //google, facebook, twitter
                 Padding(
                   padding: const EdgeInsets.all(25.0),
