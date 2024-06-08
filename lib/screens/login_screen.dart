@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-            onTap: () => Navigator.of(context).pushNamed('/home'),
+            onTap: () => context.go('/home'),
             child: Icon(Icons.home_outlined)),
         actions: [
           Padding(
@@ -23,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Icon(Icons.shopping_basket_outlined),
           ),
           InkWell(
-            onTap: () => Navigator.of(context).pushNamed('/login'),
+            onTap: () => context.go('/login'),
             child: Padding(
               padding: const EdgeInsets.only(right: 20.0),
               child: Icon(Icons.person_outlined),
@@ -136,10 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/register');
-                        print("tıklandı");
-                      },
+                      onTap: () => context.go('/register'),
                       child: Text(
                         "Sign up",
                         style: TextStyle(

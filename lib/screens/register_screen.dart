@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -15,15 +16,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-            onTap: () => Navigator.of(context).pushNamed('/home'),
-            child: Icon(Icons.home_outlined)),
+            onTap: () => context.go('/home'), child: Icon(Icons.home_outlined)),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: Icon(Icons.shopping_basket_outlined),
           ),
           InkWell(
-            onTap: () => Navigator.of(context).pushNamed('/login'),
+            onTap: () => context.go('/login'),
             child: Padding(
               padding: const EdgeInsets.only(right: 20.0),
               child: Icon(Icons.person_outlined),
@@ -241,7 +241,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pushNamed('/login');
+                  context.go('/login');
                   print("tıklandı");
                 },
                 child: Text(

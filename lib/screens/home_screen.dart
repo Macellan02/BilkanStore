@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/category.dart';
 
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Icon(Icons.shopping_basket_outlined),
           ),
           InkWell(
-            onTap: () => Navigator.of(context).pushNamed('/login'),
+            onTap: () => context.go('/login'),
             child: Padding(
               padding: const EdgeInsets.only(right: 20.0),
               child: Icon(Icons.person_outlined),
