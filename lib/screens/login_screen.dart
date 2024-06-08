@@ -23,11 +23,18 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.only(right: 20.0),
             child: Icon(Icons.shopping_basket_outlined),
           ),
-          InkWell(
-            onTap: () => context.go('/login'),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20.0),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: InkWell(
+              onTap: () => context.go('/login'),
               child: Icon(Icons.person_outlined),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: InkWell(
+              onTap: () => context.go('/settings'),
+              child: Icon(Icons.tune_outlined),
             ),
           ),
         ],

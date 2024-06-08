@@ -3,6 +3,7 @@
 import 'package:bilkan_store/screens/home_screen.dart';
 import 'package:bilkan_store/screens/login_screen.dart';
 import 'package:bilkan_store/screens/register_screen.dart';
+import 'package:bilkan_store/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -27,6 +28,10 @@ final _router = GoRouter(
     GoRoute(
       path: '/register',
       builder: (context, state) => RegisterScreen(),
+    ),
+    GoRoute(
+      path: '/settings',
+      builder: (context, state) => SettingsScreen(),
     ),
   ],
 );
