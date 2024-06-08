@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
             width: 550,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/background.png"),
+                image: AssetImage("assets/images/logo.png"),
               ),
             ),
           ),
