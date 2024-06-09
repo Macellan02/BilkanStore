@@ -2,11 +2,14 @@
 
 import 'dart:io';
 
+import 'package:bilkan_store/bloc/settings/settings_cubit.dart';
+import 'package:bilkan_store/bloc/settings/settings_state.dart';
 import 'package:bilkan_store/screens/home_screen.dart';
 import 'package:bilkan_store/screens/login_screen.dart';
 import 'package:bilkan_store/screens/register_screen.dart';
 import 'package:bilkan_store/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -88,15 +91,7 @@ class _MyAppState extends State<MyApp> {
     if (kIsWeb) {   
        changeLanguage("tr");
     } else{
-      final String defaultLocale = Platform.localeName;
-      var liste = defaultLocale.split('_');
-      var isSupported =
-          AppLocalizations.delegate.isSupported(Locale(liste[0], ""));
-      if (isSupported) {
-        changeLanguage(liste[0]);
-      } else {
-        changeLanguage("tr");
-      }
+
     }
 
     if (l == null) {
@@ -116,34 +111,41 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _router,
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('tr', ''),
-      ],
-      locale: Locale(language),
-
-      theme: ThemeData(
-        brightness: darkMode ? Brightness.dark : Brightness.light,
-        primarySwatch: Colors.amber,
-        useMaterial3: true,
+    return BlocProvider(
+      create: (BuildContext context) => SettingsCubit(SettingsState()),
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context , state) {
+          return MaterialApp.router(
+            routerConfig: _router,
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en', ''),
+              Locale('tr', ''),
+            ],
+            locale: Locale(state.language),
+          
+            theme: ThemeData(
+              brightness: state.darkMode ? Brightness.dark : Brightness.light,
+              primarySwatch: Colors.amber,
+              useMaterial3: true,
+            ),
+          
+            //navigator
+            /* routes: {
+              '/home': (context) => HomeScreen(),
+              '/login': (context) => LoginScreen(),
+              '/register': (context) => RegisterScreen(),
+            }, */
+          );
+        }
       ),
-
-      //navigator
-      /* routes: {
-        '/home': (context) => HomeScreen(),
-        '/login': (context) => LoginScreen(),
-        '/register': (context) => RegisterScreen(),
-      }, */
     );
   }
 }

@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_local_variable
 
+import 'package:bilkan_store/bloc/settings/settings_cubit.dart';
+import 'package:bilkan_store/bloc/settings/settings_state.dart';
 import 'package:bilkan_store/localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,14 +22,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   //tema
   bool darkMode = false;
-
-  changeThemeMode(bool isDark) async {
-    SharedPreferences memory = await SharedPreferences.getInstance();
-    await memory.setBool("darkMode", isDark);
-    setState(() {
-      darkMode = isDark;
-    });
-  }
+  
 
   changeLanguage(String lang) async {
     SharedPreferences memory = await SharedPreferences.getInstance();
@@ -107,6 +103,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
         appBar: AppBar(
           leading: InkWell(
@@ -133,28 +132,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ],
         ),
-        body: Column(
-          children: [
-            InkWell(
+        body: BlocBuilder<SettingsCubit, SettingsState>(
+            builder: (context, state) {
+          return Column(
+            children: [
+              InkWell(
                 onTap: () => _showActionSheet(context),
-                child: Text("Language: $language")),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(AppLocalizations.of(context).getTranslate('darkMode')),
-                  Switch(
-                      value: darkMode,
-                      onChanged: (value) {
-                        setState(() {
-                          changeThemeMode(value);
-                        });
-                      }),
-                ],
+                child: Text("Language: ${state.language}"),   
               ),
-            ),
-          ],
-        ));
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(AppLocalizations.of(context).getTranslate('darkMode')),
+                    Switch(
+                        value: state.darkMode,
+                        onChanged: (value) {
+                          SettingsCubit().changeThemeMode(value);
+                        }),
+                  ],
+                ),
+              ),
+            ],
+          );
+        }));
   }
 }
