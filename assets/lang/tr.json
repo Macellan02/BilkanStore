@@ -4,5 +4,11 @@
     "language": "Dil",
     "Language_selection": "Dil Seçimi",
     "Language_selection2": "Tercih ettiğiniz dili seçiniz",
-    "cancel":"Çıkış"
+    "cancel":"Çıkış",
+    "gir": "GİRİŞ YAP",
+    "hesabın_yok?":"Hesabın yok mu?",
+    "kayıt_ol":"Kayıt ol",
+    "kayıt_ol2":"İle Kayıt Ol",
+    "kayıt_ol3":"Kayıt ol",
+    "var":"Zaten hesabınız var mı?"
 }

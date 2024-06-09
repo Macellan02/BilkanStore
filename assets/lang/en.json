@@ -1,8 +1,14 @@
 {
     "settings":"settings",
-    "darkMode": "darkMode",
-    "language": "language",
-    "Language_selection": "Language_selection",
-    "Language_selection2": "Language_selection",
-    "cancel":"cancel"
+    "darkMode": "Dark mode",
+    "language": "Language",
+    "Language_selection": "LANGUAGE SELECTION",
+    "Language_selection2": "Select your preferred language",
+    "cancel":"cancel",
+    "gir": "LOGİN",
+    "hesabın_yok?":"Don't have an account?",
+    "kayıt_ol":"Sign up",
+    "kayıt_ol2":"Or Sign up with",
+    "kayıt_ol3":"Register",
+    "var":"Already have an account?"
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, avoid_print
 
+import 'package:bilkan_store/localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -46,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             width: 550,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/background.png"),
+                image: AssetImage("assets/images/logo.png"),
               ),
             ),
           ),
@@ -181,7 +182,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text("Kayıt ol"),
+                child: Text(
+                  AppLocalizations.of(context).getTranslate("kayıt_ol3"),
+                  style: TextStyle(color: Colors.white),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black87,
                 ),
@@ -191,7 +195,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           SizedBox(height: 30),
           //or
           Text(
-            "or Sign In with",
+            AppLocalizations.of(context).getTranslate("kayıt_ol2"),
             style: TextStyle(
               color: Colors.grey,
               fontSize: 11,
@@ -208,7 +212,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   width: 100,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text("google"),
+                    child: Text(
+                      "google",
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(219, 68, 55, 10),
                     ),
@@ -218,7 +225,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   width: 110,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text("facebook"),
+                    child: Text(
+                      "facebook",
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(51, 89, 165, 0.984),
                     ),
@@ -228,7 +238,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   width: 100,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text("X"),
+                    child: Text(
+                      "X",
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                     ),
@@ -243,7 +256,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Already have an account?",
+                AppLocalizations.of(context).getTranslate("var"),
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 11,
@@ -255,7 +268,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   print("tıklandı");
                 },
                 child: Text(
-                  "Login",
+                  AppLocalizations.of(context).getTranslate("gir"),
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 11,

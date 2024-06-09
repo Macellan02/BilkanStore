@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
+import 'package:bilkan_store/localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,8 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-            onTap: () => context.go('/home'),
-            child: Icon(Icons.home_outlined)),
+            onTap: () => context.go('/home'), child: Icon(Icons.home_outlined)),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
@@ -88,7 +88,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text("Giriş Yap"),
+                      child: Text(
+                        AppLocalizations.of(context).getTranslate("gir"),
+                        style: TextStyle(color: Colors.white),
+                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black87,
                       ),
@@ -106,7 +109,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 100,
                         child: ElevatedButton(
                           onPressed: () {},
-                          child: Text("google"),
+                          child: Text(
+                            "google",
+                            style: TextStyle(color: Colors.white),
+                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color.fromRGBO(219, 68, 55, 10),
                           ),
@@ -116,7 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 110,
                         child: ElevatedButton(
                           onPressed: () {},
-                          child: Text("facebook"),
+                          child: Text(
+                            "facebook",
+                            style: TextStyle(color: Colors.white),
+                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color.fromRGBO(51, 89, 165, 0.984),
                           ),
@@ -126,7 +135,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 100,
                         child: ElevatedButton(
                           onPressed: () {},
-                          child: Text("X"),
+                          child: Text(
+                            "X",
+                            style: TextStyle(color: Colors.white),
+                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black,
                           ),
@@ -140,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account?",
+                      AppLocalizations.of(context).getTranslate("hesabın_yok?"),
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 11,
@@ -149,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     InkWell(
                       onTap: () => context.go('/register'),
                       child: Text(
-                        "Sign up",
+                        AppLocalizations.of(context).getTranslate("kayıt_ol"),
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 11,

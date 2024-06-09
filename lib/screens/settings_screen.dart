@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_local_variable
 
+import 'package:bilkan_store/localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -35,29 +36,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
     });
   }
 
-  loadSettings()async{
+  loadSettings() async {
     SharedPreferences memory = await SharedPreferences.getInstance();
 
     var d = memory.getBool('darkMode');
     var l = memory.getString('language');
 
-    if (d == null){
+    if (d == null) {
       changeThemeMode(false);
-    }
-    else {
+    } else {
       darkMode = d;
     }
 
-    if (l == null){
+    if (l == null) {
       changeLanguage('en');
-    }
-    else {
+    } else {
       language = l;
     }
 
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   @override
@@ -71,8 +68,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) => CupertinoActionSheet(
-        title: const Text('Language Selection'),
-        message: const Text('Choose the language you want'),
+        title: Text(
+            AppLocalizations.of(context).getTranslate("Language_selection")),
+        message: Text(
+            AppLocalizations.of(context).getTranslate("Language_selection2")),
         actions: <CupertinoActionSheetAction>[
           CupertinoActionSheetAction(
             /// This parameter indicates the action would be a default
@@ -144,7 +143,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Dark Mode:"),
+                  Text(AppLocalizations.of(context).getTranslate('darkMode')),
                   Switch(
                       value: darkMode,
                       onChanged: (value) {
