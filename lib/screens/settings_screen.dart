@@ -22,7 +22,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   //tema
   bool darkMode = false;
-  
 
   changeLanguage(String lang) async {
     SharedPreferences memory = await SharedPreferences.getInstance();
@@ -32,7 +31,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     });
   }
 
-  loadSettings() async {
+/*   loadSettings() async {
     SharedPreferences memory = await SharedPreferences.getInstance();
 
     var d = memory.getBool('darkMode');
@@ -51,11 +50,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
 
     setState(() {});
-  }
+  } */
 
   @override
   void initState() {
-    loadSettings();
+    //loadSettings();
     super.initState();
   }
 
@@ -103,8 +102,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
+    final settings = context.read<SettingsCubit>();
 
     return Scaffold(
         appBar: AppBar(
@@ -138,7 +136,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: [
               InkWell(
                 onTap: () => _showActionSheet(context),
-                child: Text("Language: ${state.language}"),   
+                child: Text("Language: ${state.language}"),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -149,7 +147,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     Switch(
                         value: state.darkMode,
                         onChanged: (value) {
-                          SettingsCubit().changeThemeMode(value);
+                          settings.changeThemeMode(darkMode);
                         }),
                   ],
                 ),
