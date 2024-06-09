@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_local_variable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_local_variable, non_constant_identifier_names
 
 import 'package:bilkan_store/bloc/settings/settings_cubit.dart';
 import 'package:bilkan_store/bloc/settings/settings_state.dart';
@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -17,21 +16,15 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  late SettingsCubit settings;
+
   //dil
   String language = 'en';
 
   //tema
   bool darkMode = false;
 
-  changeLanguage(String lang) async {
-    SharedPreferences memory = await SharedPreferences.getInstance();
-    await memory.setString("language", lang);
-    setState(() {
-      language = lang;
-    });
-  }
-
-/*   loadSettings() async {
+  /*  loadSettings() async {
     SharedPreferences memory = await SharedPreferences.getInstance();
 
     var d = memory.getBool('darkMode');
@@ -54,6 +47,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   void initState() {
+    settings = context.read<SettingsCubit>();
     //loadSettings();
     super.initState();
   }
@@ -73,14 +67,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             /// default behavior, turns the action's text to bold text.
             isDefaultAction: true,
             onPressed: () {
-              changeLanguage("en");
-              Navigator.pop(context);
+              settings.changeLanguage('en');
             },
             child: const Text('Engilsh'),
           ),
           CupertinoActionSheetAction(
             onPressed: () {
-              changeLanguage("tr");
+              settings.changeLanguage('tr');
               Navigator.pop(context);
             },
             child: const Text('Türkçe'),
@@ -102,8 +95,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final settings = context.read<SettingsCubit>();
-
     return Scaffold(
         appBar: AppBar(
           leading: InkWell(
@@ -147,7 +138,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     Switch(
                         value: state.darkMode,
                         onChanged: (value) {
-                          settings.changeThemeMode(darkMode);
+                          settings.changeThemeMode(value);
                         }),
                   ],
                 ),
@@ -157,3 +148,4 @@ class _SettingsScreenState extends State<SettingsScreen> {
         }));
   }
 }
+
