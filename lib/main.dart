@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
+import 'dart:io';
+
 import 'package:bilkan_store/screens/home_screen.dart';
 import 'package:bilkan_store/screens/login_screen.dart';
 import 'package:bilkan_store/screens/register_screen.dart';
@@ -8,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'localizations.dart';
 
 void main() {
@@ -74,13 +76,31 @@ class _MyAppState extends State<MyApp> {
     var l = memory.getString('language');
 
     if (d == null) {
-      changeThemeMode(false);
+      if (ThemeMode.system == ThemeMode.dark) {
+        changeThemeMode(true);
+      } else {
+        changeThemeMode(false);
+      }
     } else {
       darkMode = d;
     }
 
+    if (kIsWeb) {   
+       changeLanguage("tr");
+    } else{
+      final String defaultLocale = Platform.localeName;
+      var liste = defaultLocale.split('_');
+      var isSupported =
+          AppLocalizations.delegate.isSupported(Locale(liste[0], ""));
+      if (isSupported) {
+        changeLanguage(liste[0]);
+      } else {
+        changeLanguage("tr");
+      }
+    }
+
     if (l == null) {
-      changeLanguage('en');
+      
     } else {
       language = l;
     }
