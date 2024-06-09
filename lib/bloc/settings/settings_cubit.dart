@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit(super.initialState);
 
-  changeLanguage(String lang) {
+  changeLanguage(String lang) async {
     final newState = SettingsState(
       language: lang,
       darkMode: state.darkMode,
@@ -13,6 +13,9 @@ class SettingsCubit extends Cubit<SettingsState> {
       userData: state.userData,
     );
     emit(newState);
+
+    SharedPreferences memory = await SharedPreferences.getInstance();
+    await memory.setString("language", lang);
   }
 
   changeThemeMode(bool darkMode) async {

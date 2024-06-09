@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_local_variable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_local_variable, non_constant_identifier_names
 
 import 'package:bilkan_store/bloc/settings/settings_cubit.dart';
 import 'package:bilkan_store/bloc/settings/settings_state.dart';
@@ -17,6 +17,9 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+
+  late SettingsCubit settings;
+
   //dil
   String language = 'en';
 
@@ -24,13 +27,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool darkMode = false;
   
 
-  changeLanguage(String lang) async {
-    SharedPreferences memory = await SharedPreferences.getInstance();
-    await memory.setString("language", lang);
-    setState(() {
-      language = lang;
-    });
-  }
+  
 
  /*  loadSettings() async {
     SharedPreferences memory = await SharedPreferences.getInstance();
@@ -55,6 +52,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   void initState() {
+    settings = context.read<SettingsCubit>();
     //loadSettings();
     super.initState();
   }
@@ -74,14 +72,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             /// default behavior, turns the action's text to bold text.
             isDefaultAction: true,
             onPressed: () {
-              changeLanguage("en");
-              Navigator.pop(context);
+              settings.changeLanguage('en');
             },
             child: const Text('Engilsh'),
           ),
           CupertinoActionSheetAction(
             onPressed: () {
-              changeLanguage("tr");
+              settings.changeLanguage('tr');
               Navigator.pop(context);
             },
             child: const Text('Türkçe'),
@@ -104,7 +101,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final settings = context.read<SettingsCubit>();
+    
 
     
 
