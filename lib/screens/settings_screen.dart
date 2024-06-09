@@ -32,7 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     });
   }
 
-  loadSettings() async {
+ /*  loadSettings() async {
     SharedPreferences memory = await SharedPreferences.getInstance();
 
     var d = memory.getBool('darkMode');
@@ -51,11 +51,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
 
     setState(() {});
-  }
+  } */
 
   @override
   void initState() {
-    loadSettings();
+    //loadSettings();
     super.initState();
   }
 
@@ -104,7 +104,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
 
+    final settings = context.read<SettingsCubit>();
 
+    
 
     return Scaffold(
         appBar: AppBar(
@@ -149,7 +151,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     Switch(
                         value: state.darkMode,
                         onChanged: (value) {
-                          SettingsCubit().changeThemeMode(value);
+                          settings.changeThemeMode(value);
                         }),
                   ],
                 ),
