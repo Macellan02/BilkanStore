@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:bilkan_store/bloc/settings/settings_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';

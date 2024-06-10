@@ -7,6 +7,7 @@ import 'package:bilkan_store/bloc/settings/settings_state.dart';
 import 'package:bilkan_store/screens/home_screen.dart';
 import 'package:bilkan_store/screens/login_screen.dart';
 import 'package:bilkan_store/screens/register_screen.dart';
+import 'package:bilkan_store/screens/sepet_screen.dart';
 import 'package:bilkan_store/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,6 +42,10 @@ final _router = GoRouter(
     GoRoute(
       path: '/settings',
       builder: (context, state) => SettingsScreen(),
+    ),
+    GoRoute(
+      path: '/sepet',
+      builder: (context, state) => SepetScreen(),
     ),
   ],
 );
@@ -88,14 +93,11 @@ class _MyAppState extends State<MyApp> {
       darkMode = d;
     }
 
-    if (kIsWeb) {   
-       changeLanguage("tr");
-    } else{
-
-    }
+    if (kIsWeb) {
+      changeLanguage("tr");
+    } else {}
 
     if (l == null) {
-      
     } else {
       language = l;
     }
@@ -113,39 +115,38 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => SettingsCubit(SettingsState()),
-      child: BlocBuilder<SettingsCubit, SettingsState>(
-        builder: (context , state) {
-          return MaterialApp.router(
-            routerConfig: _router,
-            debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('en', ''),
-              Locale('tr', ''),
-            ],
-            locale: Locale(state.language),
-          
-            theme: ThemeData(
-              brightness: state.darkMode ? Brightness.dark : Brightness.light,
-              primarySwatch: Colors.amber,
-              useMaterial3: true,
-            ),
-          
-            //navigator
-            /* routes: {
+      child:
+          BlocBuilder<SettingsCubit, SettingsState>(builder: (context, state) {
+        return MaterialApp.router(
+          routerConfig: _router,
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en', ''),
+            Locale('tr', ''),
+          ],
+          locale: Locale(state.language),
+
+          theme: ThemeData(
+            brightness: state.darkMode ? Brightness.dark : Brightness.light,
+            primarySwatch: Colors.amber,
+            useMaterial3: true,
+          ),
+
+          //navigator
+          /* routes: {
               '/home': (context) => HomeScreen(),
               '/login': (context) => LoginScreen(),
               '/register': (context) => RegisterScreen(),
             }, */
-          );
-        }
-      ),
+        );
+      }),
     );
   }
 }

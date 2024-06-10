@@ -10,12 +10,13 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 20),
+      height: 200,
+      width: 150,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-              image: AssetImage("assets/images/beauty.jpg"),
-              fit: BoxFit.cover)),
+        image: DecorationImage(
+            image: AssetImage("assets/images/beauty.jpg"), fit: BoxFit.cover),
+        borderRadius: BorderRadius.all(Radius.circular(18)),
+      ),
       child: Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -27,7 +28,7 @@ class Category extends StatelessWidget {
         child: Align(
             alignment: Alignment.bottomLeft,
             child: Text(
-              "title",
+              "PANTUL",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

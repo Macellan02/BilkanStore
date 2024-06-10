@@ -103,7 +103,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20.0),
-              child: Icon(Icons.shopping_basket_outlined),
+              child: InkWell(
+                  onTap: () => context.go('/sepet'),
+                  child: Icon(Icons.shopping_basket_outlined)),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 20.0),
@@ -148,4 +150,3 @@ class _SettingsScreenState extends State<SettingsScreen> {
         }));
   }
 }
-
